@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bridgebase"
+version = "0.1.0"
+description = "Multi-database SDK with gateway socket and session-based credentials"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+readme = "README.md"
+
+dependencies = [
+    "httpx>=0.25.0",
+]
+
+[project.optional-dependencies]
+postgres = ["psycopg2-binary>=2.9"]
+mysql = ["pymysql>=1.1"]
+redis = ["redis>=5.0"]
+clickhouse = ["clickhouse-driver>=0.2"]
+tigerbeetle = ["tigerbeetle==0.16.70"]
+all = [
+    "psycopg2-binary>=2.9",
+    "pymysql>=1.1",
+    "redis>=5.0",
+    "clickhouse-driver>=0.2",
+    "tigerbeetle==0.16.70",
+]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.3",
+]
+
+[tool.setuptools.packages.find]
+include = ["bridgebase*"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
