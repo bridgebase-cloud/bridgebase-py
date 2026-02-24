@@ -40,7 +40,7 @@ pip install bridgebase[all]           # Everything
 ### TigerBeetle
 
 ```python
-from bridgebase import tigerbeetle
+from bridgebase.tigerbeetle import tigerbeetle
 
 # Single import provides BOTH session creation AND type access
 with tigerbeetle(jwt_token="your-jwt-token") as tb:
@@ -72,7 +72,7 @@ with tigerbeetle(jwt_token="your-jwt-token") as tb:
 ### Redis / Valkey
 
 ```python
-from bridgebase import redis
+from bridgebase.redis import redis
 
 with redis(jwt_token="your-jwt-token") as rd:
     rd.set("key", "value")
@@ -84,7 +84,8 @@ with redis(jwt_token="your-jwt-token") as rd:
 Use the convenience functions `tigerbeetle()` and `redis()` for the simplest API:
 
 ```python
-from bridgebase import tigerbeetle, redis
+from bridgebase.tigerbeetle import tigerbeetle
+from bridgebase.redis import redis
 
 # Context manager (auto cleanup)
 with tigerbeetle(jwt_token="your-jwt-token") as tb:
@@ -115,7 +116,7 @@ finally:
 The `tigerbeetle` import provides **both** session creation AND access to all TigerBeetle types:
 
 ```python
-from bridgebase import tigerbeetle
+from bridgebase.tigerbeetle import tigerbeetle
 
 # Use tigerbeetle() to create sessions
 with tigerbeetle(jwt_token="...") as tb_client:
@@ -159,7 +160,7 @@ Create a TigerBeetle session.
 
 **Example:**
 ```python
-from bridgebase import tigerbeetle
+from bridgebase.tigerbeetle import tigerbeetle
 
 with tigerbeetle(jwt_token="...") as tb:
     tb.create_accounts([...])
@@ -178,7 +179,7 @@ Create a Redis/Valkey session.
 
 **Example:**
 ```python
-from bridgebase import redis
+from bridgebase.redis import redis
 
 with redis(jwt_token="...") as rd:
     rd.set("key", "value")
@@ -234,7 +235,8 @@ The SDK provides custom exceptions:
 - `ProxyError` — Local proxy failed to start or forward traffic
 
 ```python
-from bridgebase import tigerbeetle, AuthError, GatewayResolutionError
+from bridgebase.tigerbeetle import tigerbeetle
+from bridgebase.core import AuthError, GatewayResolutionError
 
 try:
     with tigerbeetle(jwt_token="invalid") as tb:
@@ -264,14 +266,20 @@ ruff format bridgebase/
 
 ```
 bridgebase/
-├── __init__.py          # Package exports and convenience functions
-├── tigerbeetle.py       # TigerBeetle session adapter
-├── redis.py             # Redis/Valkey session adapter
-├── base.py              # Abstract base session class
-├── gateway.py           # Gateway resolver + socket connection
-├── proxy.py             # Local TCP proxy
-├── credentials.py       # Credential fetching (for future SQL adapters)
-└── exceptions.py        # Custom exceptions
+├── __init__.py          # Root package metadata
+├── core/                # Database-agnostic infrastructure
+│   ├── __init__.py
+│   ├── base.py
+│   ├── gateway.py
+│   ├── proxy.py
+│   ├── credentials.py
+│   └── exceptions.py
+├── redis/               # Redis/Valkey adapter
+│   ├── __init__.py
+│   └── session.py
+└── tigerbeetle/         # TigerBeetle adapter
+    ├── __init__.py
+    └── session.py
 ```
 
 ## License

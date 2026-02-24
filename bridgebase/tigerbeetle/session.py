@@ -10,11 +10,10 @@ from __future__ import annotations
 import logging
 from typing import Any, Optional
 
-from bridgebase.base import BaseSession
-from bridgebase.credentials import DatabaseCredentials
-from bridgebase.exceptions import ConnectionError as BridgeConnectionError
+from bridgebase.core import BaseSession, DatabaseCredentials
+from bridgebase.core import ConnectionError as BridgeConnectionError
 
-logger = logging.getLogger("bridgebase.tigerbeetle")
+logger = logging.getLogger("bridgebase.tigerbeetle.session")
 
 
 class TigerBeetleSession(BaseSession):
@@ -50,7 +49,7 @@ class TigerBeetleSession(BaseSession):
         except ImportError as exc:
             raise BridgeConnectionError(
                 "tigerbeetle is required for TigerBeetle support. "
-                "Install it with: pip install bridgebase[tigerbeetle]"
+                "Install it with: pip install bridgebase-tigerbeetle"
             ) from exc
 
         try:

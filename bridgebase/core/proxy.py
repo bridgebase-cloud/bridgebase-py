@@ -19,9 +19,9 @@ import struct
 import threading
 from typing import Optional
 
-from bridgebase.exceptions import ProxyError
+from bridgebase.core.exceptions import ProxyError
 
-logger = logging.getLogger("bridgebase.proxy")
+logger = logging.getLogger("bridgebase.core.proxy")
 
 _CHUNK_SIZE = 65_536
 # Frame header: 4‑byte big‑endian length prefix (max ~4 GiB per frame).

@@ -23,12 +23,12 @@ import threading
 from abc import ABC, abstractmethod
 from typing import Any, Optional
 
-from bridgebase.credentials import CredentialClient, DatabaseCredentials
-from bridgebase.exceptions import ConnectionError as BridgeConnectionError
-from bridgebase.gateway import GatewayConnection, GatewayEndpoint, GatewayResolver
-from bridgebase.proxy import ProxyManager
+from bridgebase.core.credentials import CredentialClient, DatabaseCredentials
+from bridgebase.core.exceptions import ConnectionError as BridgeConnectionError
+from bridgebase.core.gateway import GatewayConnection, GatewayEndpoint, GatewayResolver
+from bridgebase.core.proxy import ProxyManager
 
-logger = logging.getLogger("bridgebase.base")
+logger = logging.getLogger("bridgebase.core.base")
 
 
 class BaseSession(ABC):

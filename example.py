@@ -6,7 +6,7 @@ enter a context manager.  `connect()` returns the native tigerbeetle.ClientSync,
 so you get full access to every method the TigerBeetle library provides.
 """
 
-from bridgebase import tigerbeetle
+from bridgebase.tigerbeetle import tigerbeetle
 
 JWT = "eyJ..."  # Replace with a real JWT
 

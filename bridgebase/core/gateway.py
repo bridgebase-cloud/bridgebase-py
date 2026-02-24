@@ -15,9 +15,9 @@ from typing import Optional
 
 import httpx
 
-from bridgebase.exceptions import AuthError, GatewayError, GatewayResolutionError
+from bridgebase.core.exceptions import AuthError, GatewayError, GatewayResolutionError
 
-logger = logging.getLogger("bridgebase.gateway")
+logger = logging.getLogger("bridgebase.core.gateway")
 
 # ---------------------------------------------------------------------------
 # Data

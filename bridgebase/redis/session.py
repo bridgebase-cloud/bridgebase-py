@@ -11,11 +11,10 @@ from __future__ import annotations
 import logging
 from typing import Any, Optional
 
-from bridgebase.base import BaseSession
-from bridgebase.credentials import DatabaseCredentials
-from bridgebase.exceptions import ConnectionError as BridgeConnectionError
+from bridgebase.core import BaseSession, DatabaseCredentials
+from bridgebase.core import ConnectionError as BridgeConnectionError
 
-logger = logging.getLogger("bridgebase.redis")
+logger = logging.getLogger("bridgebase.redis.session")
 
 
 class RedisSession(BaseSession):
@@ -52,7 +51,7 @@ class RedisSession(BaseSession):
         except ImportError as exc:
             raise BridgeConnectionError(
                 "redis is required for Redis/Valkey support. "
-                "Install it with: pip install bridgebase[redis]"
+                "Install it with: pip install bridgebase-redis"
             ) from exc
 
         try:

@@ -29,7 +29,7 @@ Security updates are provided for the latest stable release. We recommend always
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 0.1.x   | :white_check_mark: |
+| 0.2.x   | :white_check_mark: |
 
 ## Security Best Practices
 

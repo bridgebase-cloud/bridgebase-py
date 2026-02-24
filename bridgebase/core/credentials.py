@@ -14,9 +14,9 @@ from typing import Optional
 
 import httpx
 
-from bridgebase.exceptions import AuthError, CredentialError
+from bridgebase.core.exceptions import AuthError, CredentialError
 
-logger = logging.getLogger("bridgebase.credentials")
+logger = logging.getLogger("bridgebase.core.credentials")
 
 _CREDENTIALS_PATH = "/v1/db/credentials"
 _RELEASE_PATH = "/v1/db/release"
